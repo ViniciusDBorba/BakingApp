@@ -11,7 +11,8 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
+            buildConfigField 'String', 'RECIPES_BASE_URL', 'https://d17h27t6h515a5.cloudfront.net/'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -20,6 +21,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha06'
     implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha06'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'

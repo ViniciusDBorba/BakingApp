@@ -1,7 +1,9 @@
-package com.udacity.nanodegree.bakingapp;
+package com.udacity.nanodegree.bakingapp.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.udacity.nanodegree.bakingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
