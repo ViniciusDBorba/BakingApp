@@ -3,14 +3,20 @@ package com.udacity.nanodegree.bakingapp.data.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipesDTO {
+public class RecipeDTO  {
 
+    private static final int INGREDIENTS_FLAG = 0;
+    private static final int STEPS_FLAG = 1;
     private int id;
     private String name;
     private List<IngredientsDTO> ingredients = new ArrayList<>();
     private List<StepsDTO> steps = new ArrayList<>();
     private int servings;
     private String image;
+
+    public RecipeDTO() {
+
+    }
 
     public int getId() {
         return id;

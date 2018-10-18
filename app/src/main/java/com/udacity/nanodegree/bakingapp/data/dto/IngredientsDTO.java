@@ -2,15 +2,18 @@ package com.udacity.nanodegree.bakingapp.data.dto;
 
 public class IngredientsDTO {
 
-    private int quantity;
+    private float quantity;
     private String measure;
     private String ingredient;
 
-    public int getQuantity() {
+    public IngredientsDTO() {
+    }
+
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 

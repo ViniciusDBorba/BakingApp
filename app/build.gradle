@@ -12,7 +12,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', 'RECIPES_BASE_URL', 'https://d17h27t6h515a5.cloudfront.net/'
+            buildConfigField 'String', 'RECIPES_BASE_URL', '"https://d17h27t6h515a5.cloudfront.net/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

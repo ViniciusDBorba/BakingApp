@@ -8,6 +8,9 @@ public class StepsDTO {
     private String videoURL;
     private String thumbnailURL;
 
+    public StepsDTO() {
+    }
+
     public int getId() {
         return id;
     }
