@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.ui.activity.adapter.MainRecipesAdapter;
 import com.udacity.nanodegree.bakingapp.ui.activity.presenter.MainPresenter;
 import com.udacity.nanodegree.bakingapp.ui.components.SaveInstanceRecyclerView;
+import com.udacity.nanodegree.bakingapp.utils.InternetUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        if (!InternetUtils.hasInternetConnection(this)) {
+            Toast.makeText(this, getResources().getString(R.string.internet_connection), Toast.LENGTH_SHORT).show();
+            return;
+        }
         presenter.loadRecipesAdapter();
     }
 

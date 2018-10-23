@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BakingApp</string>
+    <string name="internet_connection">Oops! This app need internet connection to work correctly</string>
 </resources>
