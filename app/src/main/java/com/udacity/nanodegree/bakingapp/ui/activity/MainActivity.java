@@ -1,6 +1,7 @@
 package com.udacity.nanodegree.bakingapp.ui.activity;
 
 import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recipes_recycler)
     SaveInstanceRecyclerView recipesList;
+    @BindView(R.id.refresh_layout)
+    SwipeRefreshLayout refreshLayout;
     @BindView(R.id.recipes_progres)
     ContentLoadingProgressBar progressBar;
     public boolean loading = false;
@@ -41,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.loadRecipesAdapter();
+                refreshLayout.setRefreshing(false);
+            }
+        });
+
         if (!InternetUtils.hasInternetConnection(this)) {
             Toast.makeText(this, getResources().getString(R.string.internet_connection), Toast.LENGTH_SHORT).show();
             return;
