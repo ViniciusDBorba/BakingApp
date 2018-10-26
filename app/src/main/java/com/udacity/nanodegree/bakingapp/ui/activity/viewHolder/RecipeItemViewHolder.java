@@ -1,5 +1,6 @@
 package com.udacity.nanodegree.bakingapp.ui.activity.viewHolder;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +14,12 @@ import com.bumptech.glide.request.RequestOptions;
 import com.udacity.nanodegree.bakingapp.BuildConfig;
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.RecipeDTO;
+import com.udacity.nanodegree.bakingapp.ui.activity.MainActivity;
+import com.udacity.nanodegree.bakingapp.ui.activity.RecipeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RecipeItemViewHolder extends RecyclerView.ViewHolder {
 
@@ -23,6 +27,7 @@ public class RecipeItemViewHolder extends RecyclerView.ViewHolder {
     ImageView recipeImage;
     @BindView(R.id.recipe_name)
     TextView recipeName;
+    private RecipeDTO item;
 
 
     public RecipeItemViewHolder(@NonNull View itemView) {
@@ -31,6 +36,8 @@ public class RecipeItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(RecipeDTO item) {
+        this.item = item;
+
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions
                 .fitCenter()
@@ -42,5 +49,11 @@ public class RecipeItemViewHolder extends RecyclerView.ViewHolder {
                 .into(recipeImage);
 
         recipeName.setText(item.getName());
+    }
+
+    @OnClick(R.id.recipe_item_card)
+    public void onClickItem() {
+        Intent i = new Intent(itemView.getContext(), RecipeActivity.class);
+        itemView.getContext().startActivity(i);
     }
 }
