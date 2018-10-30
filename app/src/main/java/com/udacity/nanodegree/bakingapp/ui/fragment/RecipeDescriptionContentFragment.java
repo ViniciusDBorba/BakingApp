@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.RecipeDTO;
 
-public class RecipeDescriptionContent extends Fragment {
+public class RecipeDescriptionContentFragment extends Fragment {
 
     private RecipeDTO recipe;
 
-    public RecipeDescriptionContent() {
+    public RecipeDescriptionContentFragment() {
     }
 
-    public static RecipeDescriptionContent newInstance(RecipeDTO recipeDTO) {
-        RecipeDescriptionContent fragment = new RecipeDescriptionContent();
+    public static RecipeDescriptionContentFragment newInstance(RecipeDTO recipeDTO) {
+        RecipeDescriptionContentFragment fragment = new RecipeDescriptionContentFragment();
         fragment.recipe = recipeDTO;
         return fragment;
     }

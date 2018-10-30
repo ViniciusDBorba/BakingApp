@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="@dimen/default_padding">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/point_index_size"
+            android:layout_height="@dimen/point_index_size"
+            android:background="@drawable/black_rounded_background" />
+
+        <TextView
+            android:id="@+id/ingredient_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="INGREDIENT"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding"
+        android:paddingLeft="@dimen/big_padding"
+        android:paddingStart="@dimen/big_padding">
+
+        <View
+            android:layout_width="@dimen/point_index_size"
+            android:layout_height="@dimen/point_index_size"
+            android:background="@drawable/gray_rounded_background" />
+
+        <TextView
+            android:id="@+id/quantity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="QUANTITY"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding"
+        android:paddingLeft="@dimen/big_padding"
+        android:paddingStart="@dimen/big_padding">
+
+        <View
+            android:layout_width="@dimen/point_index_size"
+            android:layout_height="@dimen/point_index_size"
+            android:background="@drawable/gray_rounded_background" />
+
+        <TextView
+            android:id="@+id/measure_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="MEASURE"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+</LinearLayout>
