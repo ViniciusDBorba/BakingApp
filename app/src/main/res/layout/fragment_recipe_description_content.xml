@@ -31,6 +31,7 @@
             android:layout_height="wrap_content">
 
             <com.udacity.nanodegree.bakingapp.ui.components.SaveInstanceRecyclerView
+                android:id="@+id/steps_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
