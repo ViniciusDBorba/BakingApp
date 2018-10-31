@@ -1,6 +1,9 @@
 package com.udacity.nanodegree.bakingapp.data.dto;
 
-public class StepsDTO {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class StepsDTO implements Parcelable {
 
     private int id;
     private String shortDescription;
@@ -9,6 +12,14 @@ public class StepsDTO {
     private String thumbnailURL;
 
     public StepsDTO() {
+    }
+
+    public StepsDTO(Parcel in) {
+        id = in.readInt();
+        shortDescription = in.readString();
+        description = in.readString();
+        videoURL = in.readString();
+        thumbnailURL = in.readString();
     }
 
     public int getId() {
@@ -50,4 +61,30 @@ public class StepsDTO {
     public void setThumbnailURL(String thumbnailURL) {
         this.thumbnailURL = thumbnailURL;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(shortDescription);
+        dest.writeString(description);
+        dest.writeString(videoURL);
+        dest.writeString(thumbnailURL);
+    }
+
+    public static final Creator<StepsDTO> CREATOR = new Creator<StepsDTO>() {
+        @Override
+        public StepsDTO createFromParcel(Parcel in) {
+            return new StepsDTO(in);
+        }
+
+        @Override
+        public StepsDTO[] newArray(int size) {
+            return new StepsDTO[size];
+        }
+    };
 }

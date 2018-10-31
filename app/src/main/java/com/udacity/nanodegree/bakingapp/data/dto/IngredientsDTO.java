@@ -1,12 +1,21 @@
 package com.udacity.nanodegree.bakingapp.data.dto;
 
-public class IngredientsDTO {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class IngredientsDTO implements Parcelable {
 
     private float quantity;
     private String measure;
     private String ingredient;
 
     public IngredientsDTO() {
+    }
+
+    public IngredientsDTO(Parcel in) {
+        quantity = in.readFloat();
+        measure = in.readString();
+        ingredient = in.readString();
     }
 
     public float getQuantity() {
@@ -32,4 +41,28 @@ public class IngredientsDTO {
     public void setIngredient(String ingredient) {
         this.ingredient = ingredient;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeFloat(quantity);
+        dest.writeString(measure);
+        dest.writeString(ingredient);
+    }
+
+    public static final Creator<IngredientsDTO> CREATOR = new Creator<IngredientsDTO>() {
+        @Override
+        public IngredientsDTO createFromParcel(Parcel in) {
+            return new IngredientsDTO(in);
+        }
+
+        @Override
+        public IngredientsDTO[] newArray(int size) {
+            return new IngredientsDTO[size];
+        }
+    };
 }

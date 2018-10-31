@@ -2,6 +2,7 @@ package com.udacity.nanodegree.bakingapp.ui.activity.viewHolder;
 
 import android.content.Intent;
 import android.media.Image;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -54,6 +55,7 @@ public class RecipeItemViewHolder extends RecyclerView.ViewHolder {
     @OnClick(R.id.recipe_item_card)
     public void onClickItem() {
         Intent i = new Intent(itemView.getContext(), RecipeActivity.class);
+        i.putExtra(RecipeActivity.RECIPE_EXTRA, item);
         itemView.getContext().startActivity(i);
     }
 }
