@@ -1,8 +1,6 @@
 package com.udacity.nanodegree.bakingapp.ui.activity.viewHolder;
 
 import android.content.Intent;
-import android.media.Image;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,10 +10,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.udacity.nanodegree.bakingapp.BuildConfig;
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.RecipeDTO;
-import com.udacity.nanodegree.bakingapp.ui.activity.MainActivity;
 import com.udacity.nanodegree.bakingapp.ui.activity.RecipeActivity;
 
 import butterknife.BindView;

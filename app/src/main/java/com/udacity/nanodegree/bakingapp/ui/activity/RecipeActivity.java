@@ -8,9 +8,9 @@ import android.widget.TextView;
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.RecipeDTO;
 import com.udacity.nanodegree.bakingapp.ui.components.SaveInstanceRecyclerView;
-import com.udacity.nanodegree.bakingapp.ui.fragment.adapter.IngredientsAdapter;
-import com.udacity.nanodegree.bakingapp.ui.fragment.adapter.StepsAdapter;
-import com.udacity.nanodegree.bakingapp.ui.fragment.presenter.RecipeDescriptionContentPresenter;
+import com.udacity.nanodegree.bakingapp.ui.activity.adapter.IngredientsAdapter;
+import com.udacity.nanodegree.bakingapp.ui.activity.adapter.StepsAdapter;
+import com.udacity.nanodegree.bakingapp.ui.activity.presenter.RecipePresenter;
 
 import java.util.Objects;
 
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class RecipeActivity extends AppCompatActivity {
 
     public static final String RECIPE_EXTRA = "recipe";
-    private RecipeDescriptionContentPresenter presenter;
+    private RecipePresenter presenter;
 
     @BindView(R.id.ingredients_recycler)
     SaveInstanceRecyclerView ingredientsRecyclerView;
@@ -38,7 +38,7 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         ButterKnife.bind(this);
-        this.presenter = new RecipeDescriptionContentPresenter(this, (RecipeDTO) Objects.requireNonNull(getIntent().getExtras()).getParcelable(RECIPE_EXTRA));
+        this.presenter = new RecipePresenter(this, (RecipeDTO) Objects.requireNonNull(getIntent().getExtras()).getParcelable(RECIPE_EXTRA));
 
     }
 

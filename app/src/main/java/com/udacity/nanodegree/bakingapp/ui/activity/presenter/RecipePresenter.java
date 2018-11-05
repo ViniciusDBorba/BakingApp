@@ -1,19 +1,19 @@
-package com.udacity.nanodegree.bakingapp.ui.fragment.presenter;
+package com.udacity.nanodegree.bakingapp.ui.activity.presenter;
 
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.RecipeDTO;
 import com.udacity.nanodegree.bakingapp.ui.activity.RecipeActivity;
-import com.udacity.nanodegree.bakingapp.ui.fragment.adapter.IngredientsAdapter;
-import com.udacity.nanodegree.bakingapp.ui.fragment.adapter.StepsAdapter;
+import com.udacity.nanodegree.bakingapp.ui.activity.adapter.IngredientsAdapter;
+import com.udacity.nanodegree.bakingapp.ui.activity.adapter.StepsAdapter;
 
-public class RecipeDescriptionContentPresenter {
+public class RecipePresenter {
 
     private final RecipeDTO recipe;
     private final RecipeActivity activity;
     private IngredientsAdapter ingredientsAdapter;
     private StepsAdapter stepsAdapter;
 
-    public RecipeDescriptionContentPresenter(RecipeActivity activity, RecipeDTO recipeDTO) {
+    public RecipePresenter(RecipeActivity activity, RecipeDTO recipeDTO) {
         this.recipe = recipeDTO;
         this.activity = activity;
     }

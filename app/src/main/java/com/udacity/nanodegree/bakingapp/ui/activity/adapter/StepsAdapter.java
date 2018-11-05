@@ -1,4 +1,4 @@
-package com.udacity.nanodegree.bakingapp.ui.fragment.adapter;
+package com.udacity.nanodegree.bakingapp.ui.activity.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.StepsDTO;
-import com.udacity.nanodegree.bakingapp.ui.fragment.viewHolder.StepsViewHolder;
+import com.udacity.nanodegree.bakingapp.ui.activity.viewHolder.StepsViewHolder;
 
 import java.util.List;
 

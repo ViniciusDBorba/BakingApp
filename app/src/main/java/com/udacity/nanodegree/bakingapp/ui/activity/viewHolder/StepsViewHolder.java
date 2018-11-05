@@ -1,4 +1,4 @@
-package com.udacity.nanodegree.bakingapp.ui.fragment.viewHolder;
+package com.udacity.nanodegree.bakingapp.ui.activity.viewHolder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
