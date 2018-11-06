@@ -29,7 +29,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull StepsViewHolder stepsViewHolder, int i) {
-        stepsViewHolder.bind(getItem(i));
+        stepsViewHolder.bind(steps, i);
     }
 
     private StepsDTO getItem(int i) {

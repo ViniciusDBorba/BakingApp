@@ -13,8 +13,8 @@ public class StepsPresenter {
     private final StepsActivity activity;
     private StepsPagerAdapter adapter;
 
-    public StepsPresenter(StepsActivity activity, RecipeDTO recipe) {
-        this.steps = recipe.getSteps();
+    public StepsPresenter(StepsActivity activity, List<StepsDTO> steps) {
+        this.steps = steps;
         this.activity = activity;
     }
 

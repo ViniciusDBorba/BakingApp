@@ -1,5 +1,7 @@
 package com.udacity.nanodegree.bakingapp.ui.activity.viewHolder;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,9 +13,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.udacity.nanodegree.bakingapp.R;
 import com.udacity.nanodegree.bakingapp.data.dto.StepsDTO;
+import com.udacity.nanodegree.bakingapp.ui.activity.StepsActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class StepsViewHolder extends RecyclerView.ViewHolder {
 
@@ -21,13 +28,16 @@ public class StepsViewHolder extends RecyclerView.ViewHolder {
     ImageView stepThumb;
     @BindView(R.id.step_small_description)
     TextView smallDescription;
+    private List<StepsDTO> steps = new ArrayList<>();
 
     public StepsViewHolder(@NonNull View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(StepsDTO item) {
+    public void bind(List<StepsDTO> items, int i) {
+        this.steps = items;
+        StepsDTO item = items.get(i);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions
                 .fitCenter()
@@ -38,5 +48,12 @@ public class StepsViewHolder extends RecyclerView.ViewHolder {
                 .apply(requestOptions)
                 .into(stepThumb);
         smallDescription.setText(item.getShortDescription());
+    }
+
+    @OnClick(R.id.step_card)
+    public void onClickStep() {
+        Intent i = new Intent(itemView.getContext(), StepsActivity.class);
+        i.putParcelableArrayListExtra(StepsActivity.RECIPE_EXTRA, (ArrayList<? extends Parcelable>) steps);
+        itemView.getContext().startActivity(i);
     }
 }
