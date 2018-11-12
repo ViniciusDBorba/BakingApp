@@ -9,21 +9,23 @@ import java.util.List;
 
 public class StepsPresenter {
 
-    private final List<StepsDTO> steps;
+    private List<StepsDTO> steps;
     private final StepsActivity activity;
+    private final int position;
     private StepsPagerAdapter adapter;
 
-    public StepsPresenter(StepsActivity activity, List<StepsDTO> steps) {
+    public StepsPresenter(StepsActivity activity, List<StepsDTO> steps, int position) {
         this.steps = steps;
         this.activity = activity;
+        this.position = position;
     }
 
     public void loadPagerAdapter() {
         if (adapter != null)
             return;
 
-        this.adapter = new StepsPagerAdapter(activity.getSupportFragmentManager());
-        activity.setStepsAdapter(adapter);
+        this.adapter = new StepsPagerAdapter(activity.getSupportFragmentManager(), steps);
+        activity.setStepsAdapter(adapter, position);
 
     }
 }

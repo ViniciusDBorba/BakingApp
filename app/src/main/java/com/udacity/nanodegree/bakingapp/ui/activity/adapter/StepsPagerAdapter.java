@@ -11,8 +11,9 @@ import java.util.List;
 
 public class StepsPagerAdapter extends FragmentStatePagerAdapter {
     List<StepsDTO> steps = new ArrayList<>();
-    public StepsPagerAdapter(FragmentManager fm) {
+    public StepsPagerAdapter(FragmentManager fm, List<StepsDTO> steps) {
         super(fm);
+        this.steps = steps;
     }
 
     @Override

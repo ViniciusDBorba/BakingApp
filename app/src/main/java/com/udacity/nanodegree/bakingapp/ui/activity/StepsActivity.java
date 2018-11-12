@@ -22,6 +22,7 @@ public class StepsActivity extends AppCompatActivity {
 
 
     public static final String RECIPE_EXTRA = "RECIPE_EXTRA";
+    public static final String STEP_POSITION_EXTRA = "POSITION";
     private StepsPresenter presenter;
 
     @BindView(R.id.steps_pager)
@@ -33,7 +34,7 @@ public class StepsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_steps);
 
         ButterKnife.bind(this);
-        this.presenter = new StepsPresenter(this, (List) Objects.requireNonNull(getIntent().getExtras().getParcelableArrayList(RECIPE_EXTRA)));
+        this.presenter = new StepsPresenter(this, (List) Objects.requireNonNull(getIntent().getExtras().getParcelableArrayList(RECIPE_EXTRA)), getIntent().getExtras().getInt(STEP_POSITION_EXTRA));
 
     }
 
@@ -44,16 +45,9 @@ public class StepsActivity extends AppCompatActivity {
         presenter.loadPagerAdapter();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (pager.getCurrentItem() == 0) {
-            super.onBackPressed();
-        } else {
-            pager.setCurrentItem(pager.getCurrentItem() - 1);
-        }
-    }
 
-    public void setStepsAdapter(StepsPagerAdapter adapter) {
+    public void setStepsAdapter(StepsPagerAdapter adapter, int position) {
         pager.setAdapter(adapter);
+        pager.setCurrentItem(position);
     }
 }

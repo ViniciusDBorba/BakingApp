@@ -29,6 +29,7 @@ public class StepsViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.step_small_description)
     TextView smallDescription;
     private List<StepsDTO> steps = new ArrayList<>();
+    private int position;
 
     public StepsViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -37,6 +38,7 @@ public class StepsViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(List<StepsDTO> items, int i) {
         this.steps = items;
+        this.position = i;
         StepsDTO item = items.get(i);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions
@@ -54,6 +56,7 @@ public class StepsViewHolder extends RecyclerView.ViewHolder {
     public void onClickStep() {
         Intent i = new Intent(itemView.getContext(), StepsActivity.class);
         i.putParcelableArrayListExtra(StepsActivity.RECIPE_EXTRA, (ArrayList<? extends Parcelable>) steps);
+        i.putExtra(StepsActivity.STEP_POSITION_EXTRA, position);
         itemView.getContext().startActivity(i);
     }
 }
