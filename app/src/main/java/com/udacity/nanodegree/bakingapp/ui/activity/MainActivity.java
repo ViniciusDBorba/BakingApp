@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private MainPresenter presenter;
 
     @BindView(R.id.recipes_recycler)
-    SaveInstanceRecyclerView recipesList;
+    public SaveInstanceRecyclerView recipesList;
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
     @BindView(R.id.recipes_progres)
