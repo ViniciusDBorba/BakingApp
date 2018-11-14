@@ -1,12 +1,26 @@
 package com.udacity.nanodegree.bakingapp.data.dto;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.udacity.nanodegree.bakingapp.utils.WidgetUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeDTO implements Parcelable {
+public class RecipeDTO implements Parcelable, Serializable {
+
+    public static final String SHARED_PREF = "SAVE";
 
     private static final int INGREDIENTS_FLAG = 0;
     private static final int STEPS_FLAG = 1;
@@ -104,4 +118,67 @@ public class RecipeDTO implements Parcelable {
             return new RecipeDTO[size];
         }
     };
+
+    public boolean saveObject(RecipeDTO obj, Context context) {
+        final File folder = new File(context.getCacheDir(), "recipe");
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+        final File suspend_f = new File(folder.getAbsolutePath(), "recipe");
+        if (!suspend_f.exists()) {
+            try {
+                suspend_f.createNewFile();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        boolean keep = true;
+
+        try {
+            fos = new FileOutputStream(suspend_f);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(obj);
+        } catch (Exception e) {
+            keep = false;
+        } finally {
+            try {
+                if (oos != null) oos.close();
+                if (fos != null) fos.close();
+                if (keep == false) suspend_f.delete();
+            } catch (Exception e) { /* do nothing */ }
+        }
+
+        if (keep) {
+            WidgetUtils.updateWidget((Activity) context);
+        }
+
+        return keep;
+    }
+
+    public RecipeDTO getObject(Context c) {
+        final File suspend_f = new File(c.getCacheDir() + "/recipe", "recipe");
+
+        RecipeDTO simpleClass = null;
+        FileInputStream fis = null;
+        ObjectInputStream is = null;
+
+        try {
+            fis = new FileInputStream(suspend_f);
+            is = new ObjectInputStream(fis);
+            simpleClass = (RecipeDTO) is.readObject();
+        } catch (Exception e) {
+            String val = e.getMessage();
+        } finally {
+            try {
+                if (fis != null) fis.close();
+                if (is != null) is.close();
+            } catch (Exception e) {
+            }
+        }
+
+        return simpleClass;
+    }
 }

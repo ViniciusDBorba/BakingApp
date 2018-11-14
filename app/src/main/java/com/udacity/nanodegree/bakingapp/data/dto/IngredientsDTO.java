@@ -3,7 +3,9 @@ package com.udacity.nanodegree.bakingapp.data.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class IngredientsDTO implements Parcelable {
+import java.io.Serializable;
+
+public class IngredientsDTO implements Parcelable, Serializable {
 
     private float quantity;
     private String measure;

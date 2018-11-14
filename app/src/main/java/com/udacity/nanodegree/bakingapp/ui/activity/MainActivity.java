@@ -1,5 +1,7 @@
 package com.udacity.nanodegree.bakingapp.ui.activity;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import com.udacity.nanodegree.bakingapp.ui.activity.adapter.MainRecipesAdapter;
 import com.udacity.nanodegree.bakingapp.ui.activity.presenter.MainPresenter;
 import com.udacity.nanodegree.bakingapp.ui.components.SaveInstanceRecyclerView;
 import com.udacity.nanodegree.bakingapp.utils.InternetUtils;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         presenter.loadRecipesAdapter();
+
+
     }
 
     public void toggleLoading() {

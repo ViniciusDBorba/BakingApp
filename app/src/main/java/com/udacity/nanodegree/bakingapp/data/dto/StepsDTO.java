@@ -3,7 +3,9 @@ package com.udacity.nanodegree.bakingapp.data.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class StepsDTO implements Parcelable {
+import java.io.Serializable;
+
+public class StepsDTO implements Parcelable, Serializable {
 
     private int id;
     private String shortDescription;
