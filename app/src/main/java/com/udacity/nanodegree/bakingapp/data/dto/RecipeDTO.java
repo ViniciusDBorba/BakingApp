@@ -21,6 +21,7 @@ import java.util.List;
 public class RecipeDTO implements Parcelable, Serializable {
 
     public static final String SHARED_PREF = "SAVE";
+    public static final String RECIPE_FILE_NAME = "recipe";
 
     private static final int INGREDIENTS_FLAG = 0;
     private static final int STEPS_FLAG = 1;
@@ -120,11 +121,13 @@ public class RecipeDTO implements Parcelable, Serializable {
     };
 
     public boolean saveObject(RecipeDTO obj, Context context) {
-        final File folder = new File(context.getCacheDir(), "recipe");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
-        final File suspend_f = new File(folder.getAbsolutePath(), "recipe");
+
+        final File folder = new File(context.getCacheDir(), RECIPE_FILE_NAME);
+
+        folder.deleteOnExit();
+        folder.mkdir();
+
+        final File suspend_f = new File(folder.getAbsolutePath(), RECIPE_FILE_NAME);
         if (!suspend_f.exists()) {
             try {
                 suspend_f.createNewFile();
@@ -159,7 +162,7 @@ public class RecipeDTO implements Parcelable, Serializable {
     }
 
     public RecipeDTO getObject(Context c) {
-        final File suspend_f = new File(c.getCacheDir() + "/recipe", "recipe");
+        final File suspend_f = new File(c.getCacheDir() + "/" + RECIPE_FILE_NAME, RECIPE_FILE_NAME);
 
         RecipeDTO simpleClass = null;
         FileInputStream fis = null;

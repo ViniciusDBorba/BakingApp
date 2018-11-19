@@ -64,8 +64,6 @@ public class StepContentFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (savedInstanceState != null)
-            refresh(savedInstanceState);
     }
 
     private void refresh(Bundle savedInstanceState) {
@@ -106,6 +104,9 @@ public class StepContentFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_step_content, container, false);
 
         ButterKnife.bind(this, v);
+
+        if (savedInstanceState != null)
+            refresh(savedInstanceState);
 
         return v;
     }

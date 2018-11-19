@@ -37,7 +37,7 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
     public BakingWidgetViewFactory(Context applicationContext) {
         this.context = applicationContext;
         this.recipe = new RecipeDTO();
-        this.recipe = recipe.getObject(context);
+        this.updateRecipe();
     }
 
     @Override
@@ -56,6 +56,8 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public RemoteViews getViewAt(int position) {
+        this.updateRecipe();
+
         List<StepsDTO> steps = recipe.getSteps();
 
         RemoteViews row = new RemoteViews(context.getPackageName(), R.layout.widget_row);
@@ -64,6 +66,10 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
         row.setOnClickFillInIntent(R.id.widget_item_container, i);
 
         return row;
+    }
+
+    private void updateRecipe() {
+        this.recipe = recipe.getObject(context);
     }
 
     @Override
@@ -90,4 +96,6 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
     public void onDataSetChanged() {
         Log.i("vini", "ch");
     }
+
+
 }
