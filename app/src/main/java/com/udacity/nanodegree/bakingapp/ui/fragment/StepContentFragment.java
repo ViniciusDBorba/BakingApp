@@ -125,14 +125,19 @@ public class StepContentFragment extends Fragment {
         if (player != null) {
             player.stop();
             player.clearVideoSurface();
+            player.release();
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (player != null)
+        if (player != null) {
             player.stop();
+            player.release();
+        }
+
+
     }
 
     @Override

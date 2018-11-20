@@ -22,8 +22,8 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.udacity.nanodegree.bakingapp.R;
+import com.udacity.nanodegree.bakingapp.data.dto.IngredientsDTO;
 import com.udacity.nanodegree.bakingapp.data.dto.RecipeDTO;
-import com.udacity.nanodegree.bakingapp.data.dto.StepsDTO;
 import com.udacity.nanodegree.bakingapp.ui.activity.MainActivity;
 
 import java.util.List;
@@ -50,18 +50,17 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public int getCount() {
-        RecipeDTO selectedRecipe = recipe;
-        return selectedRecipe != null ? selectedRecipe.getSteps().size() : 0;
+
+        return recipe != null ? recipe.getIngredients().size() : 0;
     }
 
     @Override
     public RemoteViews getViewAt(int position) {
-        this.updateRecipe();
 
-        List<StepsDTO> steps = recipe.getSteps();
+        List<IngredientsDTO> ingredients = recipe.getIngredients();
 
         RemoteViews row = new RemoteViews(context.getPackageName(), R.layout.widget_row);
-        row.setTextViewText(R.id.widget_step_description, steps.get(position).getShortDescription());
+        row.setTextViewText(R.id.widget_step_description, ingredients.get(position).getIngredient());
         Intent i = new Intent(context, MainActivity.class);
         row.setOnClickFillInIntent(R.id.widget_item_container, i);
 
@@ -70,6 +69,12 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
 
     private void updateRecipe() {
         this.recipe = recipe.getObject(context);
+    }
+
+
+    @Override
+    public void onDataSetChanged() {
+        this.updateRecipe();
     }
 
     @Override
@@ -90,11 +95,6 @@ public class BakingWidgetViewFactory implements RemoteViewsService.RemoteViewsFa
     @Override
     public boolean hasStableIds() {
         return true;
-    }
-
-    @Override
-    public void onDataSetChanged() {
-        Log.i("vini", "ch");
     }
 
 

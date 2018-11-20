@@ -20,7 +20,7 @@ import android.widget.RemoteViewsService;
 
 public class BakingWidgetService extends RemoteViewsService {
 
-    public static String CONTEXT_EXTRA = "context";
+    public static final String CONTEXT_EXTRA = "context";
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {

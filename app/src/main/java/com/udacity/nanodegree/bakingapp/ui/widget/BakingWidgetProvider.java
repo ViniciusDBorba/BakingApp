@@ -30,7 +30,6 @@ import com.udacity.nanodegree.bakingapp.ui.activity.MainActivity;
 
 public class BakingWidgetProvider extends AppWidgetProvider {
     public static String EXTRA_STEP = "STEP";
-    private RecipeDTO recipe;
 
 
     public BakingWidgetProvider() {
@@ -40,21 +39,18 @@ public class BakingWidgetProvider extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
-
-        this.updateRecipe(context);
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager,
                          int[] appWidgetIds) {
-        this.updateRecipe(context);
 
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = getListRemoteView(context);
-            if (recipe == null) {
-                views.setViewVisibility(R.id.widget_step_list, View.GONE);
-                views.setViewVisibility(R.id.widget_no_recipe_warning, View.VISIBLE);
-            }
+
+            views.setViewVisibility(R.id.widget_step_list, View.GONE);
+            views.setViewVisibility(R.id.widget_no_recipe_warning, View.VISIBLE);
+
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
@@ -77,10 +73,5 @@ public class BakingWidgetProvider extends AppWidgetProvider {
 
         views.setRemoteAdapter(R.id.widget_step_list, intent);
         return views;
-    }
-
-    private void updateRecipe(Context context) {
-        this.recipe = new RecipeDTO();
-        this.recipe = recipe.getObject(context);
     }
 }
